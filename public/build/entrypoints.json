@@ -1,0 +1,30 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_modules_es_array_filter_js-node_modules_core-js_modules_es_array-4ff6b0.js",
+        "/build/assets_store_js-assets_Home_Home_vue.js",
+        "/build/app.js"
+      ],
+      "css": [
+        "/build/app.css"
+      ]
+    },
+    "home": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_modules_es_array_filter_js-node_modules_core-js_modules_es_array-4ff6b0.js",
+        "/build/assets_store_js-assets_Home_Home_vue.js",
+        "/build/home.js"
+      ]
+    },
+    "tableau": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_modules_es_array_filter_js-node_modules_core-js_modules_es_array-4ff6b0.js",
+        "/build/tableau.js"
+      ]
+    }
+  }
+}
