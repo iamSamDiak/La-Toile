@@ -1,12 +1,10 @@
 import { createApp } from 'vue';
 import Tableau from './Tableau.vue';
 import store from "./../store"
-import Count from "./../Count/Count.vue";
 import Footer from "../Footer/Footer.vue";
 
 const app = createApp({
     template: `
-        <count></count>
         <tableau :id="id"></tableau>
     `,
     data() {
@@ -15,7 +13,6 @@ const app = createApp({
         };
     },
     components: {
-        "count": Count,
         "tableau": Tableau,
         "app-footer": Footer
     },

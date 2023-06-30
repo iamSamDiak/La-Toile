@@ -11,9 +11,11 @@
     box-sizing: border-box;
 }
 
-html, body, #app{
-    height: 100%;
+html, body{
+    height: 50vw;
+    min-height: 100%;
 }
+
 body {
     background-image: url("./../images/mur-lumiere.png");
     background-size: cover;
@@ -28,6 +30,70 @@ body {
     flex: 1;
 }
 
+/* BIENVENUE drop */
+
+.bienvenue-portail {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vw;
+    font-family: 'Chiller';
+    color: #fff;
+    z-index: 2;
+}
+
+.bienvenue-portail-title{
+    z-index: 99;
+    opacity: 0;
+}
+
+.bienvenue-portail-layer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 100%;
+}
+
+.layer-3{
+    background: #483246;
+    z-index: 98;
+}
+
+.layer-2{
+    background: #321b28;
+    z-index: 97;
+}
+
+.layer-1{
+    background: #1d0e19;
+    z-index: 96;
+}
+
+.moveUp{
+    bottom: 100%;
+    transition: 0.5s;
+}
+
+.moveDown{
+    bottom: 0%;
+    transition: 0.5s;
+}
+
+.fadeIn{
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.fadeOut{
+    opacity: 0;
+    transition: 0.5s;
+}
+
+/******************/
+
 .loading{
     font-family: 'Chiller';
     color: #fff;
@@ -39,8 +105,79 @@ body {
     margin-top: -100px;
 }
 
+.gameWon {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #0000009e;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: fadeIn 2s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+.gameWon div:first-child {
+    margin: 48px auto;
+    width: 90%;
+}
+
+.gameWon-text {
+    font-size: 2.5vw;
+}
+
+.gameWon-retry{
+    font-size: 3vw;
+    cursor: pointer;
+    width: fit-content;
+    margin: auto;
+    text-decoration: underline;
+}
+
+.gameover{
+    height: 50vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    animation: fadeIn 3s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+.gameover-title{
+    font-family: 'Chiller';
+    color: #fff;
+    font-size: 3vw;
+}
+
+.gameover-retry{
+    font-family: 'PT Serif', serif;
+    font-size: 2vw;
+    color: #fff;
+}
+
+.gameover-retry p{
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
 .container-home{
     height: 73%;
+    margin-top: 24px;
 }
 
 .header-toile-flex{
@@ -64,6 +201,14 @@ body {
 .header-toile-flex-div figure{
     width: 14%;
     cursor: pointer;
+}
+
+.header-toile-flex-div figure:hover {
+    opacity: 0.6;
+}
+
+.header-toile-flex a:hover{
+    opacity: 0.6;
 }
 
 .header-toile-flex a:link{
@@ -94,6 +239,12 @@ body {
     font-size: 1.3vw;
 }
 
+.container-home-rules-tip {
+    font-family: 'PT Serif';
+    font-size: .9vw;
+    margin: 10px auto 15px;
+}
+
 .toile-display{
     display: flex;
     height: 100%;
@@ -102,18 +253,22 @@ body {
 
 .toile-display-flex{
     display: flex;
-    width: 100%;
-    margin: 40px auto 0;
+    width: 90%;
+    margin: 40px auto;
     justify-content: space-between;
+    /* align-items: center; */
+}
+
+.toile-display-flex-tableau{
+    display: flex;
+    width: 90%;
+    margin: 0px auto;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .toile-display-flex-item{
-    width: 100%;
-    padding: 0 75px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* justify-content: center; */
+ width: 25%;
 }
 
 .toile-display-verse-ref{
@@ -136,22 +291,83 @@ body {
 }
 
 .toile-display-img{
-    width: 100%;
+
 }
 
-.toile-display-img a{
-    width: 50%;
+.toile-display-img a {
+    width: 75%;
+    display: block;
+    margin: auto;
+}
+
+.toile-display-img a:hover {
+    transition: 0.3s;
+    filter: contrast(1.5);
+}
+
+.toile-display-img a:link {
+    text-decoration: none;
+}
+
+.toile-display-img a:visited {
+    text-decoration: none;
+    color: #fff;
 }
 
 .toile-display-img figure{
     display: flex;
-    width: 100%;
-    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
 }
 
-.toile-display-img img{
-    width: 64%;
-    object-fit: scale-down;
+.toile-display-img figure .wrong-answer{
+    position: absolute;
+    width: 100%;
+    background: #940000;
+    height: 100%;
+    display: none;
+    z-index: 99;
+    opacity: 0;
+}
+
+@keyframes clipping{
+    0% { opacity: 0 }
+    25% { opacity: 0.5 }
+    50% { opacity: 0 }
+    75% { opacity: 0.5 }
+    100% { opacity: 0 }
+}
+
+@keyframes contrast {
+    0% {
+        filter: contrast(1)
+    }
+    25% {
+        filter: contrast(2)
+    }
+    50% {
+        filter: contrast(1)
+    }
+    75% {
+        filter: contrast(2)
+    }
+    100% {
+        filter: contrast(1)
+    }
+}
+
+.add_clipping{
+    display: initial !important;
+    animation: clipping 1s;
+}
+
+.add_contrast{
+    animation: contrast 1s;
+}
+
+.chosePainting:hover {
+    filter: contrast(1.3);
 }
 
 .chosePainting{
@@ -169,11 +385,34 @@ body {
     background-position-y: bottom;
 }
 
-@media (min-width: 770px) and (max-width: 1023px) {
-    html, body, #app {
-        height: 150%;
-    }
+.go-back{
+    width: 90%;
+    margin: 20px auto 40px;
+}
 
+.go-back a{
+    width: fit-content;
+    display: block;
+    font-family: 'Chiller';
+    font-size: 3vw;
+    margin: auto;
+}
+
+.go-back a:hover{
+    opacity: 0.7;
+}
+
+.go-back a:visited{
+    color: #fff;
+    text-decoration: none;
+}
+
+.go-back a:link{
+    color: #fff;
+    text-decoration: none;
+}
+
+@media (min-width: 770px) and (max-width: 1023px) {
     body {
         background-size: auto;
     }
@@ -188,12 +427,35 @@ body {
 
     .loading {
         font-size: 4.5vw;
-        height: 50%;
+    }
+
+    .gameWon-text {
+        font-size: 3vw;
+    }
+
+    .gameover {
+        margin-top: 100px;
+    }
+
+    .gameover-title {
+        font-size: 4.5vw;
+    }
+
+    .gameover-retry {
+        font-size: 3.5vw;
+    }
+
+    .container-home {
+        height: auto;
     }
 
     .container-home-rules {
         font-size: 2vw;
         margin-top: 28px;
+    }
+
+    .container-home-rules-tip {
+        font-size: 1.4vw;
     }
 
     .toile-display {
@@ -207,11 +469,20 @@ body {
 
     .toile-display-flex-item {
         width: 55%;
-        padding: 42px 20px;
+        padding: 30px 0;
+    }
+
+    .toile-display-flex-tableau{
+        flex-direction: column;
+        align-items: center;
     }
 
     .toile-display-verse, .toile-display-ref {
         font-size: 2vw;
+    }
+
+    .go-back a {
+        font-size: 3.5vw;
     }
 
     .footer {
@@ -220,12 +491,12 @@ body {
 }
 
 @media (max-width: 769px) {
-    html, body, #app {
-        height: 153%;
-    }
-
     body {
         background-size: auto;
+    }
+
+    .container-home {
+        height: auto;
     }
 
     .header-toile-flex {
@@ -246,10 +517,30 @@ body {
 
     .loading {
         font-size: 5vw;
-        height: 50%;
         margin-top: 0px;
     }
 
+    .gameWon-text, .gameWon-retry {
+        font-size: 3.5vw;
+    }
+
+    .gameover {
+        font-size: 5vw;
+        margin-top: 100px;
+    }
+
+    .gameover-retry {
+        font-size: 3vw;
+    }
+
+    .container-home-rules {
+        font-size: 2.8vw;
+        margin-top: 25px;
+    }
+
+    .container-home-rules-tip {
+        font-size: 1.9vw;
+    }
 
     .toile-display {
         align-items: normal;
@@ -260,14 +551,19 @@ body {
         align-items: center;
     }
 
-    .container-home-rules {
-        font-size: 2.8vw;
-        margin-top: 25px;
+    .toile-display-flex-item {
+        width: 55%;
+        padding: 30px 0;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .toile-display-img a {
-        width: 34%;
+    .toile-display-flex-tableau {
+        flex-direction: column;
+        align-items: center;
     }
+
+    .toile-display-img a {}
 
     .toile-display-verse, .toile-display-ref {
         font-size: 2.8vw;
@@ -277,11 +573,7 @@ body {
         justify-content: initial;
     }
 
-    .toile-display-flex-item {
-        width: 100%;
-        padding: 26px 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .go-back a {
+        font-size: 4vw;
     }
 }

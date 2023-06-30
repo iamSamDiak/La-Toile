@@ -1,10 +1,28 @@
 <template>
-  <div>
-    <p>{{ verse }}</p>
-    <p>{{ reference }}</p>
+  <div v-if="!isLoaded" class="loading">
+    <p>Chargement...</p>
   </div>
-  <div>
-    <TableauChoix v-for="c in this.col" :parent_id="id" :id_3="c.id" :image="c.image" :res="c.reponse"></TableauChoix>
+  <div v-else>
+    <Count></Count>
+    <div class="container-home">
+      <div class="container-home-rules">
+        <div class="container-home-rules-div">
+          <p>{{ verse }}</p>
+          <p>{{ reference }}</p>
+        </div>
+        <div class="container-home-rules-tip">
+          <p>ASTUCE : Connaître le contexte du verset aide...</p>
+        </div>
+      </div>
+      <div class="toile-display">
+        <div class="toile-display-flex-tableau">
+          <TableauChoix v-for="c in this.col" :parent_id="id" :id_3="c.id" :image="c.image" :res="c.reponse"></TableauChoix>
+        </div>
+      </div>
+    </div>
+    <div class="go-back">
+      <a href="/"><p>Retour</p></a>
+    </div>
   </div>
 </template>
 
@@ -21,6 +39,7 @@
     props: ['id'],
     data() {
       return {
+        isLoaded: false,
         responseData: null,
         id_2: "",
         verse: "",
@@ -41,6 +60,7 @@
               this.reference = reference;
               this.col = collection;
               this.decrementCount()
+              this.isLoaded = true
             })
             .catch(error => {
               console.error('Error:', error);
