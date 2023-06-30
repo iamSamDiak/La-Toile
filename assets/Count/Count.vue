@@ -3,7 +3,7 @@
     <div class="header-toile-flex">
       <div class="header-toile-flex-div item">
         <figure>
-          <img src="./../images/audio-off.png">
+          <a href="https://github.com/iamSamDiak" target="_blank"><img src="./../images/github.png"></a>
         </figure>
       </div>
       <div class="item" style="text-align: center">

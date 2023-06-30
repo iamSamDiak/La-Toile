@@ -118,6 +118,7 @@ body {
     text-align: center;
     animation: fadeIn 2s;
     animation-fill-mode: forwards;
+    z-index: 2;
     opacity: 0;
 }
 
