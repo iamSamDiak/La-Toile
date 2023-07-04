@@ -22,5 +22,5 @@ Si vous avez la version PHP ^8.2 sur votre machine, clonez le projet sur votre m
 
 ### via Docker
 
-Si vous avez Docker et docker-compose sur votre machine, clonez le projet et lancez à la racine du projet : `docker compose --build up -d`
+Si vous avez Docker et docker-compose sur votre machine, clonez le projet et lancez à la racine du projet : `docker compose up --build -d`
 <br>Si vous n'avez pas docker-compose, lancez `docker build .`.
