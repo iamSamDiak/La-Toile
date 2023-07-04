@@ -2,7 +2,7 @@
 <h3 align="center">Projet Symfony-Vue</h3>
 
 <p align="center">
-<img src="https://i.ibb.co/WWTxwK3/Screenshot-from-2023-07-03-18-39-26.png" width="400">
+<img src="./assets/images/la-cene.png" width="400">
 </p>
 
 <p align="center">Petit jeu de piste développé sur Symfony et Vue.</p>
